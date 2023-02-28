@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const URI =
-  "mongodb+srv://hamdan:hamdan123@mern-cluster.qk338of.mongodb.net/test";
+const URI = process.env.DATABASE_URL;
 
 const connection = () =>
   mongoose
@@ -13,6 +13,8 @@ const connection = () =>
     .then(() => {
       console.log("Connected to the Database.");
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+    });
 
 module.exports = connection;
